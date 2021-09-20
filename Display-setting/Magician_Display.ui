@@ -110,7 +110,7 @@ QRadioButton::indicator:checked {
 	border: 3px solid rgb(255, 255, 255);	
 }</string>
    </property>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QWidget" name="Universal_Display" native="true">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -137,7 +137,7 @@ border-radius: 5px;</string>
      <layout class="QFormLayout" name="formLayout"/>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QGroupBox" name="adjust_thelta">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -1039,7 +1039,7 @@ QSlider::handle:horizontal:pressed {
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="Content_2">
+   <widget class="QFrame" name="Toggle_menu">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -1071,7 +1071,7 @@ QSlider::handle:horizontal:pressed {
       <number>0</number>
      </property>
      <item>
-      <widget class="QFrame" name="frame_left_menu_3">
+      <widget class="QFrame" name="frame_menu">
        <property name="minimumSize">
         <size>
          <width>65</width>
@@ -1112,7 +1112,7 @@ border-radius: 5px;
          <number>0</number>
         </property>
         <item>
-         <widget class="QFrame" name="frame_top_menus_3">
+         <widget class="QFrame" name="frame_top">
           <property name="mouseTracking">
            <bool>true</bool>
           </property>
@@ -1129,7 +1129,7 @@ background-color: rgb(52, 59, 72);
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QPushButton" name="Btn_Setting">
+          <widget class="QPushButton" name="btn_Setting">
            <property name="geometry">
             <rect>
              <x>2</x>
@@ -1168,7 +1168,7 @@ QPushButton:pressed {
              <normaloff>../../Robot Controller API/icons/20x20/cil-settings.png</normaloff>../../Robot Controller API/icons/20x20/cil-settings.png</iconset>
            </property>
           </widget>
-          <widget class="QGroupBox" name="groupBox_3">
+          <widget class="QGroupBox" name="connection">
            <property name="geometry">
             <rect>
              <x>5</x>
@@ -3134,7 +3134,7 @@ QComboBox::drop-down {
            <zorder>btnconnect_rasp</zorder>
            <zorder>baud_raspberry</zorder>
           </widget>
-          <widget class="QGroupBox" name="groupBox">
+          <widget class="QGroupBox" name="group_name">
            <property name="geometry">
             <rect>
              <x>70</x>
@@ -3174,7 +3174,7 @@ font: 12pt &quot;Segoe UI&quot;;</string>
             </property>
            </widget>
           </widget>
-          <widget class="QGroupBox" name="groupBox_6">
+          <widget class="QGroupBox" name="simulation">
            <property name="geometry">
             <rect>
              <x>5</x>
@@ -3191,7 +3191,7 @@ font: 12pt &quot;Segoe UI&quot;;</string>
            <property name="title">
             <string/>
            </property>
-           <widget class="QPushButton" name="btnstart_simu">
+           <widget class="QPushButton" name="btn_start">
             <property name="geometry">
              <rect>
               <x>159</x>
@@ -3441,7 +3441,7 @@ border-radius: 5px;
             </property>
            </widget>
           </widget>
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="signature">
            <property name="geometry">
             <rect>
              <x>100</x>
@@ -3463,7 +3463,7 @@ border-radius: 5px;
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame_pages_3">
+      <widget class="QFrame" name="frame_pages">
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
@@ -3474,7 +3474,7 @@ border-radius: 5px;
      </item>
     </layout>
    </widget>
-   <widget class="QGroupBox" name="groupBox_4">
+   <widget class="QGroupBox" name="frame_reverse_kinematics">
     <property name="geometry">
      <rect>
       <x>335</x>
@@ -6069,11 +6069,11 @@ QLineEdit:focus {
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="frame_current_DOF">
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>10</y>
+      <y>70</y>
       <width>171</width>
       <height>201</height>
      </rect>
@@ -6838,11 +6838,11 @@ QLineEdit:focus {
     <zorder>the3_current</zorder>
     <zorder>label_15</zorder>
    </widget>
-   <widget class="QFrame" name="frame_2">
+   <widget class="QFrame" name="frame_current_pos">
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>200</y>
+      <y>220</y>
       <width>171</width>
       <height>251</height>
      </rect>
@@ -8326,13 +8326,13 @@ color:rgb(255, 255, 255)</string>
     <zorder>current_y</zorder>
     <zorder>label_6</zorder>
    </widget>
-   <widget class="QFrame" name="frame_3">
+   <widget class="QFrame" name="frame_button">
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>430</y>
+      <y>460</y>
       <width>171</width>
-      <height>111</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
@@ -8349,7 +8349,7 @@ background-color: rgb(52, 59, 72);</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>40</y>
+       <y>10</y>
        <width>61</width>
        <height>59</height>
       </rect>
@@ -8388,7 +8388,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>100</x>
-       <y>40</y>
+       <y>10</y>
        <width>61</width>
        <height>59</height>
       </rect>
@@ -8424,7 +8424,7 @@ QPushButton:pressed {
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_5">
+   <widget class="QGroupBox" name="frame_setting_length">
     <property name="geometry">
      <rect>
       <x>775</x>
@@ -8441,7 +8441,7 @@ font: 12pt &quot;Segoe UI&quot;;</string>
     <property name="title">
      <string/>
     </property>
-    <widget class="QLineEdit" name="current_z_2">
+    <widget class="QLineEdit" name="length3">
      <property name="geometry">
       <rect>
        <x>57</x>
@@ -9681,14 +9681,144 @@ QLineEdit:focus {
      </property>
     </widget>
    </widget>
-   <zorder>frame_3</zorder>
-   <zorder>frame_2</zorder>
-   <zorder>frame</zorder>
-   <zorder>widget</zorder>
-   <zorder>Content_2</zorder>
-   <zorder>groupBox_2</zorder>
-   <zorder>groupBox_4</zorder>
-   <zorder>groupBox_5</zorder>
+   <widget class="QFrame" name="frame_time_adjust">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>10</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 5px;
+background-color: rgb(52, 59, 72);</string>
+    </property>
+    <widget class="QPushButton" name="btn_plus">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>10</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	border: 2px solid rgb(52, 59, 72);
+	border-top-left-radius: 10px;	
+	border-bottom-left-radius: 10px;
+	background-color: rgb(52, 59, 72);
+}
+QPushButton:hover {
+	background-color:rgb(0, 152, 0);
+	border: 2px solid rgb(0, 152, 0);
+	border-top-left-radius: 10px;	
+	border-bottom-left-radius: 10px;	
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="files.qrc">
+       <normaloff>:/20x20/icons/20x20/cil-plus.png</normaloff>:/20x20/icons/20x20/cil-plus.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_minus">
+     <property name="geometry">
+      <rect>
+       <x>66</x>
+       <y>10</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	border: 2px solid rgb(52, 59, 72);
+	border-top-right-radius: 10px;	
+	border-bottom-right-radius: 10px;	
+	background-color: rgb(52, 59, 72);
+}
+QPushButton:hover {
+	background-color:rgb(167, 0, 0);
+	border: 2px solid rgb(167, 0, 0);
+	border-top-right-radius: 10px;	
+	border-bottom-right-radius: 10px;
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="files.qrc">
+       <normaloff>:/20x20/icons/20x20/cil-minus.png</normaloff>:/20x20/icons/20x20/cil-minus.png</iconset>
+     </property>
+    </widget>
+    <widget class="QLabel" name="time_respond">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>10</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>0 (s)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <zorder>frame_time_adjust</zorder>
+   <zorder>frame_button</zorder>
+   <zorder>frame_current_pos</zorder>
+   <zorder>frame_current_DOF</zorder>
+   <zorder>Universal_Display</zorder>
+   <zorder>Toggle_menu</zorder>
+   <zorder>adjust_thelta</zorder>
+   <zorder>frame_reverse_kinematics</zorder>
+   <zorder>frame_setting_length</zorder>
   </widget>
  </widget>
  <resources>
