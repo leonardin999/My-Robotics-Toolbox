@@ -1,0 +1,36 @@
+################################################################################
+##
+## BY: WANDERSON M.PIMENTA
+## PROJECT MADE WITH: Qt Designer and PySide2
+## V: 1.0.0
+##
+## This project can be used freely for all uses, as long as they maintain the
+## respective credits only in the Python scripts, any information in the visual
+## interface (GUI) can be modified without any implication.
+##
+## There are limitations on Qt licenses if you want to use your products
+## commercially, I recommend reading them on the official website:
+## https://doc.qt.io/qtforpython/licenses.html
+##
+################################################################################
+
+# PyQt5 Import Libraries
+import platform
+import os
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
+from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PyQt5.QtWidgets import *
+from PyQt5 import uic
+from PyQt5.QtCore import pyqtSlot
+# IMPORT QSS CUSTOM
+from Display_setting.ui_styles import Style
+
+# IMPORT FUNCTIONS
+from Magician_Display_Function import *
+import sys
+## ==> APP FUNCTIONS
+from app_functions import *
+
+## Import Robotics Function:
+from Libs.Magician_Robotics_Libs import *
