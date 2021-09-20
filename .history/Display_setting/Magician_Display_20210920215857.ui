@@ -35,15 +35,15 @@
    <property name="styleSheet">
     <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
+	background-color: rgb(85, 170, 255);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }
@@ -61,7 +61,7 @@ QCheckBox::indicator:hover {
 }
 QCheckBox::indicator:checked {
     background: 3px solid rgb(60, 168, 31);
-	border: 3px solid  rgb(60, 168, 31);	
+	border: 3px solid  rgb(60, 168, 31);
 	background-color: rgb(60, 168, 31);
 }
 /* COMBOBOX */
@@ -78,18 +78,18 @@ QComboBox:hover{
 QComboBox::drop-down {
 	subcontrol-origin: padding;
 	subcontrol-position: top right;
-	width: 25px; 
+	width: 25px;
 	border-left-width: 3px;
 	border-left-color: rgba(39, 44, 54, 150);
 	border-left-style: solid;
 	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
+	border-bottom-right-radius: 3px;
 	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);
 	background-position: center;
 	background-repeat: no-reperat;
  }
 QComboBox QAbstractItemView {
-	color: rgb(255, 255, 255);	
+	color: rgb(255, 255, 255);
 	background-color: rgb(27, 29, 35);
 	padding: 10px;
 	selection-background-color: rgb(195, 195, 195);
@@ -107,7 +107,7 @@ QRadioButton::indicator:hover {
 }
 QRadioButton::indicator:checked {
     background: 3px solid rgb(255, 255, 255);
-	border: 3px solid rgb(255, 255, 255);	
+	border: 3px solid rgb(255, 255, 255);
 }</string>
    </property>
    <widget class="QWidget" name="Universal_Display" native="true">
@@ -1088,7 +1088,7 @@ QSlider::handle:horizontal:pressed {
         <string notr="true">border-color: rgb(0, 0, 0) ;
 color:;
 background-color: rgb(52, 59, 72);
-border-radius: 5px;	
+border-radius: 5px;
 
 </string>
        </property>
@@ -1120,7 +1120,7 @@ border-radius: 5px;
            <string notr="true">border-color: rgb(0, 0, 0) ;
 color:;
 background-color: rgb(52, 59, 72);
-	border-radius: 10px;	
+	border-radius: 10px;
 </string>
           </property>
           <property name="frameShape">
@@ -1147,15 +1147,15 @@ background-color: rgb(52, 59, 72);
            <property name="styleSheet">
             <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 10px;	
+	border-radius: 10px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
+	background-color: rgb(85, 170, 255);
 	border: 2px solid rgb(85, 170, 255);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -1394,15 +1394,15 @@ font: 12pt &quot;Segoe UI&quot;;</string>
             <property name="styleSheet">
              <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color:rgb(255, 52, 17);
 }
 QPushButton:hover {
-	background-color: rgb(255, 52, 17);	
+	background-color: rgb(255, 52, 17);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(61, 70, 86);
 border-radius: 5px;
@@ -1618,17 +1618,17 @@ border-radius: 5px;
             <property name="styleSheet">
              <string notr="true">QPushButton {
 	border: 2px solidrgb(27, 29, 35);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color:rgb(27, 29, 35);}
 QPushButton:hover {
-	background-color:rgb(35, 195, 0);	
+	background-color:rgb(35, 195, 0);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }</string>
             </property>
             <property name="text">
@@ -1841,7 +1841,7 @@ QComboBox:hover{
 	border: 2px solid rgb(64, 71, 88);
 }
 QComboBox QAbstractItemView {
-	color: rgb(255, 255, 255);	
+	color: rgb(255, 255, 255);
 	background-color: rgb(27, 29, 35);
 	padding: 10px;
 	selection-background-color: rgb(85, 170, 255);
@@ -1849,12 +1849,12 @@ QComboBox QAbstractItemView {
 QComboBox::drop-down {
 	subcontrol-origin: padding;
 	subcontrol-position: top right;
-	width: 25px; 
+	width: 25px;
 	border-left-width: 3px;
 	border-left-color: rgba(39, 44, 54, 150);
 	border-left-style: solid;
 	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
+	border-bottom-right-radius: 3px;
 	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);
 	background-position: center;
 	background-repeat: no-reperat;
@@ -2080,7 +2080,7 @@ QComboBox:hover{
 	border: 2px solid rgb(64, 71, 88);
 }
 QComboBox QAbstractItemView {
-	color: rgb(255, 255, 255);	
+	color: rgb(255, 255, 255);
 	background-color: rgb(255, 255, 255);
 	padding: 10px;
 	selection-background-color: rgb(85, 170, 255);
@@ -2088,12 +2088,12 @@ QComboBox QAbstractItemView {
 QComboBox::drop-down {
 	subcontrol-origin: padding;
 	subcontrol-position: top right;
-	width: 25px; 
+	width: 25px;
 	border-left-width: 3px;
 	border-left-color: rgba(39, 44, 54, 150);
 	border-left-style: solid;
 	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
+	border-bottom-right-radius: 3px;
 	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);
 	background-position: center;
 	background-repeat: no-reperat;
@@ -2361,18 +2361,18 @@ QComboBox::drop-down {
             <property name="styleSheet">
              <string notr="true">QPushButton {
 	border: 2px solid rgb(27, 29, 35);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(27, 29, 35);
 }
 QPushButton:hover {
-	background-color:rgb(35, 195, 0);	
+	background-color:rgb(35, 195, 0);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }</string>
             </property>
             <property name="text">
@@ -2585,7 +2585,7 @@ QComboBox:hover{
 	border: 2px solid rgb(64, 71, 88);
 }
 QComboBox QAbstractItemView {
-	color: rgb(255, 255, 255);	
+	color: rgb(255, 255, 255);
 	background-color: rgb(27, 29, 35);
 	padding: 10px;
 	selection-background-color: rgb(85, 170, 255);
@@ -2593,12 +2593,12 @@ QComboBox QAbstractItemView {
 QComboBox::drop-down {
 	subcontrol-origin: padding;
 	subcontrol-position: top right;
-	width: 25px; 
+	width: 25px;
 	border-left-width: 3px;
 	border-left-color: rgba(39, 44, 54, 150);
 	border-left-style: solid;
 	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
+	border-bottom-right-radius: 3px;
 	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);
 	background-position: center;
 	background-repeat: no-reperat;
@@ -2821,15 +2821,15 @@ QComboBox::drop-down {
             <property name="styleSheet">
              <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color:rgb(255, 52, 17);
 }
 QPushButton:hover {
-	background-color: rgb(255, 52, 17);	
+	background-color: rgb(255, 52, 17);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(61, 70, 86);
 border-radius: 5px;
@@ -3049,17 +3049,17 @@ QComboBox QAbstractItemView {
 	color: rgb(255, 255, 255);
 	background-color: rgb(27, 29, 35);
 	padding: 10px;
-	selection-background-color: rgb(85, 170, 255);	
+	selection-background-color: rgb(85, 170, 255);
 }
 QComboBox::drop-down {
 	subcontrol-origin: padding;
 	subcontrol-position: top right;
-	width: 25px; 
+	width: 25px;
 	border-left-width: 3px;
 	border-left-color: rgba(39, 44, 54, 150);
 	border-left-style: solid;
 	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
+	border-bottom-right-radius: 3px;
 	background-image: url(:/16x16/icons/16x16/cil-arrow-bottom.png);
 	background-position: center;
 	background-repeat: no-reperat;
@@ -3393,18 +3393,18 @@ font: 12pt &quot;Segoe UI&quot;;</string>
             <property name="styleSheet">
              <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(27, 29, 35);
 }
 QPushButton:hover {
-	background-color:rgb(35, 195, 0);	
+	background-color:rgb(35, 195, 0);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(61, 70, 86);
-border-radius: 5px;	
+border-radius: 5px;
 }</string>
             </property>
             <property name="text">
@@ -3693,15 +3693,15 @@ font: 12pt &quot;Segoe UI&quot;;</string>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
-	border: 2px solid rgb(85, 170, 255);	
-border-radius: 5px;	
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -3916,15 +3916,15 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
+	background-color: rgb(85, 170, 255);
 	border: 2px solid rgb(85, 170, 255);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -4139,15 +4139,15 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
+	background-color: rgb(85, 170, 255);
 	border: 2px solid rgb(85, 170, 255);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -4362,15 +4362,15 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
-	border: 2px solid rgb(85, 170, 255);	
-border-radius: 5px;	
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -4585,15 +4585,15 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
-	border: 2px solid rgb(85, 170, 255);	
-border-radius: 5px;	
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -4808,15 +4808,15 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
+	border-radius: 5px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(85, 170, 255);	
+	background-color: rgb(85, 170, 255);
 	border: 2px solid rgb(85, 170, 255);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -8363,15 +8363,15 @@ background-color: rgb(52, 59, 72);</string>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 10px;	
+	border-radius: 10px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(255, 170, 127);	
-	border: 2px solid rgb(255, 170, 127);	
-border-radius: 5px;	
+	background-color: rgb(255, 170, 127);
+	border: 2px solid rgb(255, 170, 127);
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -8402,15 +8402,15 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-radius: 10px;	
+	border-radius: 10px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
-	background-color: rgb(0, 170, 127);	
+	background-color: rgb(0, 170, 127);
 	border: 2px solid rgb(0, 170, 127);
-border-radius: 5px;	
+border-radius: 5px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -9718,17 +9718,17 @@ background-color: rgb(52, 59, 72);</string>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-top-left-radius: 10px;	
+	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
 	background-color:rgb(0, 152, 0);
 	border: 2px solid rgb(0, 152, 0);
-	border-top-left-radius: 10px;	
-	border-bottom-left-radius: 10px;	
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -9759,17 +9759,17 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	border: 2px solid rgb(52, 59, 72);
-	border-top-right-radius: 10px;	
-	border-bottom-right-radius: 10px;	
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 	background-color: rgb(52, 59, 72);
 }
 QPushButton:hover {
 	background-color:rgb(167, 0, 0);
 	border: 2px solid rgb(167, 0, 0);
-	border-top-right-radius: 10px;	
+	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
-QPushButton:pressed {	
+QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
@@ -9782,12 +9782,12 @@ QPushButton:pressed {
        <normaloff>../../Robot Controller API/icons/24x24/cil-minus.png</normaloff>../../Robot Controller API/icons/24x24/cil-minus.png</iconset>
      </property>
     </widget>
-    <widget class="QLineEdit" name="time_respond">
+    <widget class="QLineEdit" name="the1_set_2">
      <property name="geometry">
       <rect>
        <x>120</x>
        <y>10</y>
-       <width>51</width>
+       <width>41</width>
        <height>40</height>
       </rect>
      </property>

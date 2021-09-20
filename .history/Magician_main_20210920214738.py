@@ -30,7 +30,6 @@ class MainWindow(QMainWindow):
         self.ui.the3_adjust.valueChanged.connect(lambda: UIFunctions.valuechange(self))
         self.ui.btn_plus.clicked.connect(lambda: UIFunctions.timechange_plus(self))
         self.ui.btn_minus.clicked.connect(lambda: UIFunctions.timechange_minus(self))
-        self.ui.btn_reset.clicked.connect(lambda: UIFunctions.reset(self))
 
 if __name__=="__main__":
     app = QApplication(sys.argv)

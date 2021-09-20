@@ -9782,12 +9782,12 @@ QPushButton:pressed {
        <normaloff>../../Robot Controller API/icons/24x24/cil-minus.png</normaloff>../../Robot Controller API/icons/24x24/cil-minus.png</iconset>
      </property>
     </widget>
-    <widget class="QLineEdit" name="time_respond">
+    <widget class="QLineEdit" name="the1_set_2">
      <property name="geometry">
       <rect>
        <x>120</x>
        <y>10</y>
-       <width>51</width>
+       <width>41</width>
        <height>40</height>
       </rect>
      </property>

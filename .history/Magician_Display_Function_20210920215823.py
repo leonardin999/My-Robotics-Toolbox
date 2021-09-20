@@ -35,7 +35,7 @@ class UIFunctions(MainWindow):
         widget.setGraphicsEffect(self.shadow)
 
     def uiDefinitions(self):
-        self.ui.time_respond.setText('6 (s)')
+        self.ui.time_responsive.setText('6 (s)')
         self.ui.mode_check.setChecked(False)
         self.ui.btn_start.setEnabled(False)
         self.ui.connection.hide()
@@ -57,36 +57,15 @@ class UIFunctions(MainWindow):
         self.ui.the3_set.setText(value_the3)
 
     def timechange_plus(self):
-        time = self.ui.time_respond.text().split()
+        time = self.ui.time_responsive.text().split()
         plus = int(time[0])+1
         if 0<plus and plus<20:
-            self.ui.time_respond.setText(str(plus)+' (s)')
+            self.ui.time_responsive.setText(str(plus)+' (s)')
         else: pass
 
     def timechange_minus(self):
-        time = self.ui.time_respond.text().split()
+        time = self.ui.time_responsive.text().split()
         minus = int(time[0])-1
         if 0<minus and minus<20:
-            self.ui.time_respond.setText(str(minus)+' (s)')
+            self.ui.time_responsive.setText(str(minus)+' (s)')
         else: pass
-
-    def reset(self):
-        self.ui.the1_current.clear()
-        self.ui.the2_current.clear()
-        self.ui.the3_current.clear()
-
-        self.ui.the1_set.clear()
-        self.ui.the2_set.clear()
-        self.ui.the3_set.clear()
-
-        self.ui.length1.clear()
-        self.ui.length2.clear()
-        self.ui.length3.clear()
-
-        self.ui.the1_adjust.setValue(0)
-        self.ui.the2_adjust.setValue(0)
-        self.ui.the3_adjust.setValue(0)
-
-        self.ui.xpos.clear()
-        self.ui.ypos.clear()
-        self.ui.zpos.clear()

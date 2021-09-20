@@ -22,16 +22,14 @@ class MainWindow(QMainWindow):
         #self.ui.setupUi(self)
         print('System: '+platform.system())
         print('Version: '+platform.release())
-        UIFunctions.uiDefinitions(self)
+
 
         self.ui.btn_Setting.clicked.connect(lambda: UIFunctions.toggleMenu_setting(self,280,True))
         self.ui.the1_adjust.valueChanged.connect(lambda: UIFunctions.valuechange(self))
         self.ui.the2_adjust.valueChanged.connect(lambda: UIFunctions.valuechange(self))
         self.ui.the3_adjust.valueChanged.connect(lambda: UIFunctions.valuechange(self))
-        self.ui.btn_plus.clicked.connect(lambda: UIFunctions.timechange_plus(self))
-        self.ui.btn_minus.clicked.connect(lambda: UIFunctions.timechange_minus(self))
-        self.ui.btn_reset.clicked.connect(lambda: UIFunctions.reset(self))
 
+        UIFunctions.uiDefinitions(self)
 if __name__=="__main__":
     app = QApplication(sys.argv)
     window = MainWindow()

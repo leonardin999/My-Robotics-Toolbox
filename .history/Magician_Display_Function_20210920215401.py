@@ -61,6 +61,7 @@ class UIFunctions(MainWindow):
         plus = int(time[0])+1
         if 0<plus and plus<20:
             self.ui.time_respond.setText(str(plus)+' (s)')
+            self.ui.time_respond.adjustSize()
         else: pass
 
     def timechange_minus(self):
@@ -68,25 +69,5 @@ class UIFunctions(MainWindow):
         minus = int(time[0])-1
         if 0<minus and minus<20:
             self.ui.time_respond.setText(str(minus)+' (s)')
+            self.ui.time_respond.adjustSize()
         else: pass
-
-    def reset(self):
-        self.ui.the1_current.clear()
-        self.ui.the2_current.clear()
-        self.ui.the3_current.clear()
-
-        self.ui.the1_set.clear()
-        self.ui.the2_set.clear()
-        self.ui.the3_set.clear()
-
-        self.ui.length1.clear()
-        self.ui.length2.clear()
-        self.ui.length3.clear()
-
-        self.ui.the1_adjust.setValue(0)
-        self.ui.the2_adjust.setValue(0)
-        self.ui.the3_adjust.setValue(0)
-
-        self.ui.xpos.clear()
-        self.ui.ypos.clear()
-        self.ui.zpos.clear()

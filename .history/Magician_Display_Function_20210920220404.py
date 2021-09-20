@@ -86,7 +86,3 @@ class UIFunctions(MainWindow):
         self.ui.the1_adjust.setValue(0)
         self.ui.the2_adjust.setValue(0)
         self.ui.the3_adjust.setValue(0)
-
-        self.ui.xpos.clear()
-        self.ui.ypos.clear()
-        self.ui.zpos.clear()

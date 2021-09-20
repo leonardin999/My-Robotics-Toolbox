@@ -69,24 +69,3 @@ class UIFunctions(MainWindow):
         if 0<minus and minus<20:
             self.ui.time_respond.setText(str(minus)+' (s)')
         else: pass
-
-    def reset(self):
-        self.ui.the1_current.clear()
-        self.ui.the2_current.clear()
-        self.ui.the3_current.clear()
-
-        self.ui.the1_set.clear()
-        self.ui.the2_set.clear()
-        self.ui.the3_set.clear()
-
-        self.ui.length1.clear()
-        self.ui.length2.clear()
-        self.ui.length3.clear()
-
-        self.ui.the1_adjust.setValue(0)
-        self.ui.the2_adjust.setValue(0)
-        self.ui.the3_adjust.setValue(0)
-
-        self.ui.xpos.clear()
-        self.ui.ypos.clear()
-        self.ui.zpos.clear()
