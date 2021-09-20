@@ -16,7 +16,7 @@
 
 # IMPORT QSS CUSTOM
 from Display_setting.ui_styles import Style
-
+from Display_setting.ui_Magician_Display import *
 # IMPORT FUNCTIONS
 from Magician_Display_Function import *
 import sys
