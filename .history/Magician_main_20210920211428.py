@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         #self.ui.setupUi(self)
         print('System: '+platform.system())
         print('Version: '+platform.release())
-        self.ui.btn_Setting.clicked.connect(lambda: UIFunctions.toggleMenu_setting(self,280,True))
+        self.ui.btn_Setting.clicked.connect(UIFunctions.toggleMenu_setting(self,280,True))
         UIFunctions.uiDefinitions(self)
 if __name__=="__main__":
     app = QApplication(sys.argv)

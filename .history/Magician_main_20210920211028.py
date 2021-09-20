@@ -19,9 +19,8 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = uic.loadUi('Display_setting/Magician_Display.ui',self)
         #self.ui.setupUi(self)
-        print('System: '+platform.system())
-        print('Version: '+platform.release())
-        self.ui.btn_Setting.clicked.connect(lambda: UIFunctions.toggleMenu_setting(self,280,True))
+        print('System: ' + platform.system())
+        print('Version: ' +platform.release())
         UIFunctions.uiDefinitions(self)
 if __name__=="__main__":
     app = QApplication(sys.argv)
