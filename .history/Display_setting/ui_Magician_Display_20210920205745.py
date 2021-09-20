@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:/Users/Leonard/AppData/Local/Temp/Magician_DisplayIpqLFN.ui'
+# Form implementation generated from reading ui file 'C:/Users/Leonard/AppData/Local/Temp/Magician_DisplayGKTKWy.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -536,7 +536,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_Setting.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/24x24/icons/24x24/cil-settings.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../../Robot Controller API/icons/20x20/cil-settings.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_Setting.setIcon(icon)
         self.btn_Setting.setObjectName("btn_Setting")
         self.connection = QtWidgets.QGroupBox(self.frame_top)
@@ -3228,7 +3228,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(52, 59, 72);")
         self.frame_button.setObjectName("frame_button")
         self.btn_home = QtWidgets.QPushButton(self.frame_button)
-        self.btn_home.setGeometry(QtCore.QRect(30, 15, 61, 59))
+        self.btn_home.setGeometry(QtCore.QRect(30, 10, 61, 59))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -3254,7 +3254,7 @@ class Ui_MainWindow(object):
         self.btn_home.setIcon(icon10)
         self.btn_home.setObjectName("btn_home")
         self.btn_reset = QtWidgets.QPushButton(self.frame_button)
-        self.btn_reset.setGeometry(QtCore.QRect(100, 15, 61, 59))
+        self.btn_reset.setGeometry(QtCore.QRect(100, 10, 61, 59))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -3860,4 +3860,4 @@ class Ui_MainWindow(object):
         self.Yposlabel_4.setText(_translate("MainWindow", "Link 2:"))
         self.time_respond.setText(_translate("MainWindow", "0 (s)"))
 
-import files_rc
+from files_rc import *

@@ -13,7 +13,7 @@
 ## https://doc.qt.io/qtforpython/licenses.html
 ##
 ################################################################################
-from Display_setting.ui_Magician_Display import Ui_MainWindow
+
 # IMPORT QSS CUSTOM
 from Display_setting.ui_styles import Style
 # IMPORT FUNCTIONS
