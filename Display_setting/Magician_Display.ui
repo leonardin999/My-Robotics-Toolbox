@@ -5263,7 +5263,7 @@ QLineEdit:focus {
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="Yposlabel_3">
+    <widget class="QLabel" name="label_y">
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -5676,7 +5676,7 @@ QLineEdit:focus {
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="Xposlabel_5">
+    <widget class="QLabel" name="label_x">
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -5872,7 +5872,7 @@ QLineEdit:focus {
       <string>X:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="Zposlabel_3">
+    <widget class="QLabel" name="label_z">
      <property name="geometry">
       <rect>
        <x>300</x>

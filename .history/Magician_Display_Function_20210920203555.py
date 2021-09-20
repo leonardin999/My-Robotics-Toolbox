@@ -26,13 +26,12 @@ class UIFunctions(MainWindow):
             self.animation.start()
 
     def shadow_effect(self,widget):
-
+        widget.setGraphicsEffect(self.shadow)
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(0, 0, 0, 60))
-        widget.setGraphicsEffect(self.shadow)
 
     def uiDefinitions(self):
         self.ui.time_respond.setText('6 (s)')

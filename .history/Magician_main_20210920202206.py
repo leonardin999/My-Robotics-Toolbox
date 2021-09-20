@@ -16,11 +16,10 @@ from app_modules import *
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        QMainWindow.__init__(self)
         self.ui = uic.loadUi('Display_setting\Magician_Display.ui',self)
-        UIFunctions.uiDefinitions(self)
+    UIFunctions.uiDefinitions(self)
 if __name__=="__main__":
-    app = QApplication(sys.argv)
+    app = QGuiApplication(sys.argv)
     window = MainWindow()
-    window.show()
+    winow.show()
     sys.exit(app.exec_())
