@@ -78,13 +78,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_reset.clicked.connect(lambda: Userfunctions.link_adjustment(self))
         self.ui.btn_home.clicked.connect(lambda: Userfunctions.Home_position(self))
 
-        ## button Functionality of Inverse Kinematics:
-        self.ui.btn_left.clicked.connect(lambda: Userfunctions.left_signal(self,5))
-        self.ui.btn_right.clicked.connect(lambda: Userfunctions.right_signal(self,5))
-        self.ui.btn_for.clicked.connect(lambda: Userfunctions.forward_signal(self,5))
-        self.ui.btn_back.clicked.connect(lambda: Userfunctions.backward_signal(self,5))
-        self.ui.btn_up.clicked.connect(lambda: Userfunctions.up_signal(self,5))
-        self.ui.btn_down.clicked.connect(lambda: Userfunctions.down_signal(self,5))
         ## button simulation mode
         self.ui.btn_start.clicked.connect(lambda: Userfunctions.start_process(self))
         self.ui.mode_check.stateChanged.connect(lambda: UIFunctions.simulation_check(self))
@@ -109,14 +102,83 @@ class MainWindow(QMainWindow):
 
     def start_simulation_mode(self):
         self.active = True
-        worker = Worker(lambda: Userfunctions.Trajectory(self))
+        worker = Worker(lambda: self.Trajectory())
         self.threadpool.start(worker)
 
     def stop_simulation_mode(self):
         self.active = False
         time.sleep(0.3)
 
+    def Trajectory(self):
+        time = self.ui.time_respond.text().split()
+        compare = int(time[0])
+        self.idx=0
+        while self.ui.mode_check.isChecked() and self.idx <= compare*10-30 and self.active == True:
+            try:
+                value_1 = np.round(float(self.ui.the1_current.text()),2)
+                value_2 = np.round(float(self.ui.the2_current.text()),2)
+                value_3 = np.round(float(self.ui.the3_current.text()),2)
+                the = np.array([value_1,value_2,value_3])
+                time = self.time_respond.text().split()
+                tc = int(time[0])
 
+                a1 = self.the1pre
+                b1 = 0
+                c1 = 3 * (the[0]- self.the1pre) / tc ** 2
+                d1 = -2 * (the[0] - self.the1pre) / tc ** 3
+
+                a2 = self.the2pre
+                b2 = 0
+                c2 = 3 * (the[1]- self.the2pre) / tc ** 2
+                d2 = -2 * (the[1]- self.the2pre) / tc ** 3
+
+                a3 = self.the3pre
+                b3 = 0
+                c3 = 3 * (the[2] - self.the3pre) / tc ** 2
+                d3 = -2 * (the[2] - self.the3pre) / tc ** 3
+
+                self.the1_flex = np.round(a1 + b1 * self.idx / 10 + c1 * (self.idx / 10) * 2 + d1 * (self.idx / 10) * 3, 4)
+                self.the2_flex = np.round(a2 + b2 * self.idx / 10 + c2 * (self.idx / 10) * 2 + d2 * (self.idx / 10) * 3, 4)
+                self.the3_flex = np.round(a3 + b3 * self.idx / 10 + c3 * (self.idx / 10) * 2 + d3 * (self.idx / 10) * 3, 4)
+
+                theta_flex = np.array([self.the1_flex,self.the2_flex,self.the3_flex])
+                self.ui.the1_current.setText(str(Userfunctions.convert_to_Deg(theta_flex[0])))
+                self.ui.the2_current.setText(str(Userfunctions.convert_to_Deg(theta_flex[1])))
+                self.ui.the3_current.setText(str(Userfunctions.convert_to_Deg(theta_flex[2])))
+                T01 = self.Robot.initial_parameters(theta_flex,1)
+                T02 = self.Robot.initial_parameters(theta_flex,2)
+                T03 = self.Robot.initial_parameters(theta_flex,3)
+                T0E = self.Robot.initial_parameters(theta_flex,4)
+                x = np.array([T01[0,3],T02[0,3],T03[0,3],T0E[0,3]])
+                y = np.array([T01[1,3],T02[1,3],T03[1,3],T0E[1,3]])
+                z = np.array([T01[2,3],T02[2,3],T03[2,3],T0E[2,3]])
+                self.screen.axes.clear()
+                self.screen.config_display(self.screen)
+                # line -[link length] plot
+                self.screen.axes.plot([0,x[0]],[0,y[0]],[0,z[0]],linewidth=9)
+                self.screen.axes.plot([x[0],x[1]],[y[0],y[1]],[z[0],z[1]],linewidth=9)
+                self.screen.axes.plot([x[1],x[2]],[y[1],y[2]],[z[1],z[2]],linewidth=9)
+                self.screen.axes.plot([x[2],x[3]],[y[2],y[3]],[z[2],z[3]],linewidth=9)
+                # Joints syntaxis plot
+                self.screen.axes.scatter(0, 0, 0, marker="o", color='k',s=200)
+                self.screen.axes.scatter(x[0], y[0], z[0], marker="o", color='k',s=200)
+                self.screen.axes.scatter(x[1], y[1], z[1], marker="o", color='k',s=200)
+                self.screen.axes.scatter(x[2], y[2], z[2], marker="o", color='k',s=200)
+                self.screen.axes.scatter(x[3], y[3], z[3], marker="o", color='k',s=200)
+                self.screen.draw()
+                self.ui.current_x.setText(str(np.round(x[3],2)))
+                self.ui.current_y.setText(str(np.round(y[3],2)))
+                self.ui.current_z.setText(str(np.round(z[3],2)))
+                self.the1_current.setText(str(round(self.the1_flex,3)))
+                self.the2_current.setText(str(round(self.the2_flex,3)))
+                self.the3_current.setText(str(round(self.the3_flex,3)))
+
+                self.the1pre = self.the1_flex
+                self.the2pre = self.the2_flex
+                self.the3pre = self.the3_flex
+                self.idx += 1
+            except:
+                pass
 class Worker(QtCore.QRunnable):
 
 	def __init__(self, function, *args, **kwargs):

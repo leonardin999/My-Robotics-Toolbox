@@ -78,13 +78,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_reset.clicked.connect(lambda: Userfunctions.link_adjustment(self))
         self.ui.btn_home.clicked.connect(lambda: Userfunctions.Home_position(self))
 
-        ## button Functionality of Inverse Kinematics:
-        self.ui.btn_left.clicked.connect(lambda: Userfunctions.left_signal(self,5))
-        self.ui.btn_right.clicked.connect(lambda: Userfunctions.right_signal(self,5))
-        self.ui.btn_for.clicked.connect(lambda: Userfunctions.forward_signal(self,5))
-        self.ui.btn_back.clicked.connect(lambda: Userfunctions.backward_signal(self,5))
-        self.ui.btn_up.clicked.connect(lambda: Userfunctions.up_signal(self,5))
-        self.ui.btn_down.clicked.connect(lambda: Userfunctions.down_signal(self,5))
         ## button simulation mode
         self.ui.btn_start.clicked.connect(lambda: Userfunctions.start_process(self))
         self.ui.mode_check.stateChanged.connect(lambda: UIFunctions.simulation_check(self))
@@ -115,8 +108,6 @@ class MainWindow(QMainWindow):
     def stop_simulation_mode(self):
         self.active = False
         time.sleep(0.3)
-
-
 class Worker(QtCore.QRunnable):
 
 	def __init__(self, function, *args, **kwargs):

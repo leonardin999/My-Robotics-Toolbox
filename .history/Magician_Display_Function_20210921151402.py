@@ -55,7 +55,7 @@ class UIFunctions(MainWindow):
         self.length1.setText('20')
         self.length2.setText('25')
         self.length3.setText('10')
-        #UIFunctions.Update_value(self)
+        UIFunctions.Update_value(self)
 
         self.ui.mode_check.setChecked(False)
 

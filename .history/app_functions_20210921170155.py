@@ -88,8 +88,7 @@ class Userfunctions(MainWindow):
                 self.the1_flex = np.round(a1 + b1 * self.idx / 10 + c1 * (self.idx / 10) * 2 + d1 * (self.idx / 10) * 3, 4)
                 self.the2_flex = np.round(a2 + b2 * self.idx / 10 + c2 * (self.idx / 10) * 2 + d2 * (self.idx / 10) * 3, 4)
                 self.the3_flex = np.round(a3 + b3 * self.idx / 10 + c3 * (self.idx / 10) * 2 + d3 * (self.idx / 10) * 3, 4)
-                self.screen.axes.clear()
-                self.screen.config_display(self.screen)
+
                 theta_flex = np.array([self.the1_flex,self.the2_flex,self.the3_flex])
                 theta_flex_convert = np.deg2rad(theta_flex)
                 self.ui.the1_current.setText(str(theta_flex[0]))
@@ -102,6 +101,8 @@ class Userfunctions(MainWindow):
                 x = np.array([T01[0,3],T02[0,3],T03[0,3],T0E[0,3]])
                 y = np.array([T01[1,3],T02[1,3],T03[1,3],T0E[1,3]])
                 z = np.array([T01[2,3],T02[2,3],T03[2,3],T0E[2,3]])
+                self.screen.axes.clear()
+                self.screen.config_display(self.screen)
                 # line -[link length] plot
                 self.screen.axes.plot([0,x[0]],[0,y[0]],[0,z[0]],linewidth=9)
                 self.screen.axes.plot([x[0],x[1]],[y[0],y[1]],[z[0],z[1]],linewidth=9)
@@ -183,7 +184,7 @@ class Userfunctions(MainWindow):
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta = self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
+        Userfunctions.set_joint_angle(thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
@@ -196,7 +197,7 @@ class Userfunctions(MainWindow):
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
+        Userfunctions.set_joint_angle(thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
@@ -209,7 +210,7 @@ class Userfunctions(MainWindow):
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
+        Userfunctions.set_joint_angle(thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
@@ -222,7 +223,7 @@ class Userfunctions(MainWindow):
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
+        Userfunctions.set_joint_angle(thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
@@ -235,7 +236,7 @@ class Userfunctions(MainWindow):
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
+        Userfunctions.set_joint_angle(thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
@@ -248,7 +249,7 @@ class Userfunctions(MainWindow):
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
+        Userfunctions.set_joint_angle(thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 

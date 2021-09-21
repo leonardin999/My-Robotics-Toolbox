@@ -15,7 +15,6 @@ class Userfunctions(MainWindow):
                         ]
     def convert_to_Deg(value):
         return np.round(np.rad2deg(value),2)
-
     def Geometry_display(self):
         try:
             self.the = [np.deg2rad(float(self.ui.the1_set.text())),
@@ -88,20 +87,20 @@ class Userfunctions(MainWindow):
                 self.the1_flex = np.round(a1 + b1 * self.idx / 10 + c1 * (self.idx / 10) * 2 + d1 * (self.idx / 10) * 3, 4)
                 self.the2_flex = np.round(a2 + b2 * self.idx / 10 + c2 * (self.idx / 10) * 2 + d2 * (self.idx / 10) * 3, 4)
                 self.the3_flex = np.round(a3 + b3 * self.idx / 10 + c3 * (self.idx / 10) * 2 + d3 * (self.idx / 10) * 3, 4)
-                self.screen.axes.clear()
-                self.screen.config_display(self.screen)
+
                 theta_flex = np.array([self.the1_flex,self.the2_flex,self.the3_flex])
-                theta_flex_convert = np.deg2rad(theta_flex)
-                self.ui.the1_current.setText(str(theta_flex[0]))
-                self.ui.the2_current.setText(str(theta_flex[1]))
-                self.ui.the3_current.setText(str(theta_flex[2]))
-                T01 = self.Robot.initial_parameters(theta_flex_convert,1)
-                T02 = self.Robot.initial_parameters(theta_flex_convert,2)
-                T03 = self.Robot.initial_parameters(theta_flex_convert,3)
-                T0E = self.Robot.initial_parameters(theta_flex_convert,4)
+                self.ui.the1_current.setText(theta_flex[0])
+                self.ui.the2_current.setText(theta_flex[0])
+                self.ui.the3_current.setText(theta_flex[0])
+                T01 = self.Robot.initial_parameters(theta_flex,1)
+                T02 = self.Robot.initial_parameters(theta_flex,2)
+                T03 = self.Robot.initial_parameters(theta_flex,3)
+                T0E = self.Robot.initial_parameters(theta_flex,4)
                 x = np.array([T01[0,3],T02[0,3],T03[0,3],T0E[0,3]])
                 y = np.array([T01[1,3],T02[1,3],T03[1,3],T0E[1,3]])
                 z = np.array([T01[2,3],T02[2,3],T03[2,3],T0E[2,3]])
+                self.screen.axes.clear()
+                self.screen.config_display(self.screen)
                 # line -[link length] plot
                 self.screen.axes.plot([0,x[0]],[0,y[0]],[0,z[0]],linewidth=9)
                 self.screen.axes.plot([x[0],x[1]],[y[0],y[1]],[z[0],z[1]],linewidth=9)
@@ -138,19 +137,12 @@ class Userfunctions(MainWindow):
                     np.deg2rad(float(self.ui.the2_current.text())),
                     np.deg2rad(float(self.ui.the3_current.text())),
                     ]
+        position = self.Robot.Forward_kinematis(self.the)
+        self.ui.xpos.setText(str(position[0]))
+        self.ui.ypos.setText(str(position[1]))
+        self.ui.zpos.setText(str(position[2]))
         self.stop_simulation_mode()
         self.start_simulation_mode()
-
-    def set_joint_angle(self,thelta):
-        thelta1 = str(int(np.rad2deg(thelta[0])))
-        thelta2 = str(int(np.rad2deg(thelta[1])))
-        thelta3 = str(int(np.rad2deg(thelta[2])))
-        self.the1_set.setText(thelta1)
-        self.ui.the1_adjust.setValue(int(self.ui.the1_set.text()))
-        self.the2_set.setText(thelta2)
-        self.ui.the2_adjust.setValue(int(self.ui.the2_set.text()))
-        self.the3_set.setText(thelta3)
-        self.ui.the3_adjust.setValue(int(self.ui.the3_set.text()))
 
     def Home_position(self):
             self.the1_set.setText('162')
@@ -163,10 +155,6 @@ class Userfunctions(MainWindow):
                         np.deg2rad(float(self.ui.the2_set.text())),
                         np.deg2rad(float(self.ui.the3_set.text())),
                         ]
-            position = np.round_(self.Robot.Forward_kinematis(self.the),2)
-            self.ui.xpos.setText(str(position[0]))
-            self.ui.ypos.setText(str(position[1]))
-            self.ui.zpos.setText(str(position[2]))
             if self.ui.mode_check.isChecked():
                 self.stop_simulation_mode()
                 self.start_simulation_mode()
@@ -175,80 +163,74 @@ class Userfunctions(MainWindow):
 
 
     def forward_signal(self,step):
-        x = float(self.ui.xpos.text())-step
-        y = float(self.ui.ypos.text())
-        z = float(self.ui.zpos.text())
+        x = int(self.ui.xpos.text())-step
+        y = int(self.ui.ypos.text())
+        z = int(self.ui.zpos.text())
         position =[x,y,z]
         self.ui.xpos.setText(str(position[0]))
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta = self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
     def backward_signal(self,step):
-        x = float(self.ui.xpos.text())+step
-        y = float(self.ui.ypos.text())
-        z = float(self.ui.zpos.text())
+        x = int(self.ui.xpos.text())+step
+        y = int(self.ui.ypos.text())
+        z = int(self.ui.zpos.text())
         position =[x,y,z]
         self.ui.xpos.setText(str(position[0]))
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
     def left_signal(self,step):
-        x = float(self.ui.xpos.text())
-        y = float(self.ui.ypos.text())-step
-        z = float(self.ui.zpos.text())
+        x = int(self.ui.xpos.text())
+        y = int(self.ui.ypos.text())-step
+        z = int(self.ui.zpos.text())
         position =[x,y,z]
         self.ui.xpos.setText(str(position[0]))
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
     def right_signal(self,step):
-        x = float(self.ui.xpos.text())
-        y = float(self.ui.ypos.text())+step
-        z = float(self.ui.zpos.text())
+        x = int(self.ui.xpos.text())
+        y = int(self.ui.ypos.text())+step
+        z = int(self.ui.zpos.text())
         position =[x,y,z]
         self.ui.xpos.setText(str(position[0]))
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
     def up_signal(self,step):
-        x = float(self.ui.xpos.text())
-        y = float(self.ui.ypos.text())
-        z = float(self.ui.zpos.text())+step
+        x = int(self.ui.xpos.text())
+        y = int(self.ui.ypos.text())
+        z = int(self.ui.zpos.text())+step
         position =[x,y,z]
         self.ui.xpos.setText(str(position[0]))
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 
     def down_signal(self,step):
-        x = float(self.ui.xpos.text())
-        y = float(self.ui.ypos.text())
-        z = float(self.ui.zpos.text())-step
+        x = int(self.ui.xpos.text())
+        y = int(self.ui.ypos.text())
+        z = int(self.ui.zpos.text())-step
         position =[x,y,z]
         self.ui.xpos.setText(str(position[0]))
         self.ui.ypos.setText(str(position[1]))
         self.ui.zpos.setText(str(position[2]))
         thelta =self.Robot.Inverse_kinematics(position,4)
-        Userfunctions.set_joint_angle(self,thelta)
         self.stop_simulation_mode()
         self.start_simulation_mode()
 

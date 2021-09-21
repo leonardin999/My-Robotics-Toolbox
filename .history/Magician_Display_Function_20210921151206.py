@@ -55,9 +55,7 @@ class UIFunctions(MainWindow):
         self.length1.setText('20')
         self.length2.setText('25')
         self.length3.setText('10')
-        #UIFunctions.Update_value(self)
-
-        self.ui.mode_check.setChecked(False)
+        UIFunctions.Update_value(self)
 
     def valuechange(self):
         value_the1 = str(self.ui.the1_adjust.value())
@@ -114,7 +112,6 @@ class UIFunctions(MainWindow):
         self.ui.ypos.clear()
         self.ui.zpos.clear()
 
-        self.ui.mode_check.setChecked(False)
     def simulation_check(self):
         if self.ui.mode_check.isChecked():
             self.btn_start.setEnabled(True)
