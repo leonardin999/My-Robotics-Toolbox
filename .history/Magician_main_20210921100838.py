@@ -21,7 +21,6 @@ from PyQt5.QtCore import pyqtSlot
 import warnings
 warnings.filterwarnings('ignore')
 from app_modules import *
-from app_functions import *
 class Display(FigureCanvas):
     def __init__(self,parent=None, width = 70, height = 50,dpi=75):
         figure = Figure(figsize=(width,height),dpi=dpi)

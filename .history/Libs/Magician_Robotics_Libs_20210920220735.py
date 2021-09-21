@@ -18,18 +18,14 @@ t = lambda x,y: m.atan2(x,y)
 class Magician:
     def __init__(self,link_length):
         self.l = link_length
-
-    def ChangeValue(self,new_length):
-        self.l = new_length
-
     def DHmatrix(self,alp,a,d,the):
         '''
         the is called the joint variable
         d is the joint variable
-        The geometry of a robotic mechanism is conveniently defined
-        by attaching coordinate frames to each link.While these frames
-        could be located arbitrarily, it is advantageous both for
-        consistency and computational efficiency to
+        The geometry of a robotic mechanism is conveniently defined 
+        by attaching coordinate frames to each link.While these frames 
+        could be located arbitrarily, it is advantageous both for 
+        consistency and computational efficiency to 
         adhere to a convention for locating the frameson the links.
         '''
         Mdh=np.matrix([[c(the)        , -s(the)       , 0       , a],
@@ -37,7 +33,7 @@ class Magician:
                        [s(the)*s(alp) , c(the)*s(alp) , c(alp)  , d*c(alp)],
                        [0             ,      0        , 0       , 1]])
         return Mdh
-
+    
     def initial_parameters(self,the,option = 1):
         '''
         DHMATRIX Summary of this function goes here
@@ -45,26 +41,26 @@ class Magician:
        joint    Link twist     Link Offset    Link Leight   Joint variable
          1       0                 0             L1             the1;...       %frame1
          2       pi/2              0             0              the2;...       %frame2
-         3       0                 L2            0              the3;...       %frame3
+         3       0                 L2            0              the3;...       %frame3 
         end      0                 L3            0                0];          %End-point
-
+        
          Joint frame with respect to the world coordinates.
         '''
         T01 = np.array([[c(the[0]), -s(the[0]), 0,          0],
                         [s(the[0]),  c(the[0]), 0,          0],
                         [0        ,          0, 1,  self.l[0]],
                         [0        ,          0, 0,          1]])
-
+        
         T12 = np.array([[c(the[1]), -s(the[1]),  0,  0],
                         [0        ,          0,  1,  0],
                         [s(the[1]),  c(the[1]),  0,  0],
                         [0        ,          0,  0,  1]])
-
+        
         T23 = np.array([[c(the[2]), -s(the[2]),  0,  self.l[1]],
                         [s(the[2]),  c(the[2]),  0,        0],
                         [0        ,          0,  1,        0],
                         [0        ,          0,  0,        1]])
-
+        
         T3E = np.array([[1,0, 0,  self.l[2]],
                         [0,1, 0,         0],
                         [0,0, 1,         0],
@@ -81,7 +77,7 @@ class Magician:
             return T03
         elif option == 4:
             return T0E
-
+        
     def Forward_kinematis(self,the):
         End_Effector_Frame = self.initial_parameters(the,4)
         x = End_Effector_Frame[0,3]
@@ -89,7 +85,7 @@ class Magician:
         z = End_Effector_Frame[2,3]
         position = np.array([x,y,z])
         return position
-
+    
     def Inverse_kinematics(self,pos,solution=1):
         #scenario 1:
         the1 = t(pos[1],pos[0])
@@ -143,7 +139,7 @@ class Magician:
         elif solution == 8:
             Sol8 = np.array([the1_1   ,  the2_1[1]  ,   the3_1[1]])
             return Sol8
-
+    
     def geometry(self,the,title=" ",enable = False):
         T01 = self.initial_parameters(the,1)
         T02 = self.initial_parameters(the,2)
@@ -155,8 +151,8 @@ class Magician:
         plt.ion()
         plt.style.use("seaborn-notebook")
         fig = plt.figure()
-        axis = fig.add_subplot(111,projection='3d')
-
+        axis = fig.add_subplot(111,projection='3d') 
+        
         # line -[link length] plot
         axis.plot([0,x[0]],[0,y[0]],[0,z[0]],linewidth=5)
         axis.plot([x[0],x[1]],[y[0],y[1]],[z[0],z[1]],linewidth=5)

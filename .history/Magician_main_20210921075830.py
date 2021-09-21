@@ -21,7 +21,6 @@ from PyQt5.QtCore import pyqtSlot
 import warnings
 warnings.filterwarnings('ignore')
 from app_modules import *
-from app_functions import *
 class Display(FigureCanvas):
     def __init__(self,parent=None, width = 70, height = 50,dpi=75):
         figure = Figure(figsize=(width,height),dpi=dpi)
@@ -32,19 +31,19 @@ class Display(FigureCanvas):
         self.axes = figure.gca(projection='3d')
         figure.tight_layout()
         super(Display, self).__init__(figure)
-    def config_display(self,widget):
-        widget.axes.set_facecolor('#343b48')
-        widget.axes.grid(True)
-        widget.axes.set_xlim(10,-45)
-        widget.axes.set_ylim(-35, 35)
-        widget.axes.set_zlim(-5, 35)
+    def config_display(self):
+        self.axes.set_facecolor('#343b48')
+        self.axes.grid(True)
+        self.axes.set_xlim(10,-45)
+        self.axes.set_ylim(-35, 35)
+        self.axes.set_zlim(-5, 35)
 
-        widget.axes.set_xlabel('X_axis',color='white',fontsize=10)
-        widget.axes.set_ylabel('Y_axis',color='white',fontsize=10)
-        widget.axes.set_zlabel('Z_axis',color='white',fontsize=10)
-        widget.axes.tick_params(axis='x', colors='white')
-        widget.axes.tick_params(axis='y', colors='white')
-        widget.axes.tick_params(axis='z', colors='white')
+        self.axes.set_xlabel('X_axis',color='white',fontsize=10)
+        self.axes.set_ylabel('Y_axis',color='white',fontsize=10)
+        self.axes.set_zlabel('Z_axis',color='white',fontsize=10)
+        self.axes.tick_params(axis='x', colors='white')
+        self.axes.tick_params(axis='y', colors='white')
+        self.axes.tick_params(axis='z', colors='white')
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -55,7 +54,7 @@ class MainWindow(QMainWindow):
         UIFunctions.uiDefinitions(self)
 
         self.screen = Display(self,width=50, height=50, dpi=70)
-        self.screen.config_display(self.screen)
+        self.screen.config_display()
         self.ui.screen_form.addWidget(self.screen)
 
         self.ui.btn_Setting.clicked.connect(lambda: UIFunctions.toggleMenu_setting(self,280,True))
@@ -65,28 +64,23 @@ class MainWindow(QMainWindow):
         self.ui.btn_plus.clicked.connect(lambda: UIFunctions.timechange_plus(self))
         self.ui.btn_minus.clicked.connect(lambda: UIFunctions.timechange_minus(self))
         self.ui.btn_reset.clicked.connect(lambda: UIFunctions.reset(self))
-        ## Realtime Display Event:
-
-        timer = QtCore.QTimer()
-        timer.timeout.connect(lambda: Userfunctions.Geometry_display(self))
-        timer.start(50)
 
         ## Mouse Clicked and Keyboard Event ##
+    def eventFilter(self, watched, event):
+        if watched == self.ui.adjust_thelta and event.type() == QtCore.QEvent.MouseButtonDblClick:
+            UIFunctions.reset(self)
+
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
+        if event.buttons() == Qt.LeftButton:
+            print('Mouse click: LEFT CLICK')
         if event.buttons() == Qt.RightButton:
-            UIFunctions.reset(self)
+            print('Mouse click: RIGHT CLICK')
         if event.buttons() == Qt.MidButton:
-            UIFunctions.Update_value(self)
+            print('Mouse click: MIDDLE BUTTON')
 
     def keyPressEvent(self, event):
         print('Key: ' + str(event.key()) + ' | Text Press: ' + str(event.text()))
-        if event.key() == Qt.Key_Enter():
-            self.ui.length1.setText('50')
-            self.ui.length2.setText('40')
-            self.ui.length3.setText('30')
-            self.ui.link = [self.length1,self.length2,self.length3]
-            Userfunctions.initialize_robot(self,self.link)
 
 
 if __name__=="__main__":

@@ -1,5 +1,4 @@
 from app_modules import *
-from Magician_main import *
 import numpy as np
 import math as m
 import time
@@ -7,11 +6,11 @@ from Libs.Magician_Robotics_Libs import *
 class Userfunctions(MainWindow):
     def initialize_robot(self,length):
         self.Robot = Magician(length)
-        if self.ui.the1_set.text()!="":
-            self.the = [np.deg2rad(float(self.ui.the1_set.text())),
-                        np.deg2rad(float(self.ui.the2_set.text())),
-                        np.deg2rad(float(self.ui.the3_set.text())),
-                        ]
+        self.ui.the1_set.text()!="":
+        self.the = [np.deg2rad(float(self.ui.the1_set.text())),
+                    np.deg2rad(float(self.ui.the2_set.text())),
+                    np.deg2rad(float(self.ui.the3_set.text())),
+                   ]
     def Geometry_display(self):
         try:
             while self.ui.the1_set.text()!="":

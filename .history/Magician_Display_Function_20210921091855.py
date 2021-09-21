@@ -52,15 +52,6 @@ class UIFunctions(MainWindow):
         UIFunctions.shadow_effect(self,self.ui.btn_home)
         UIFunctions.shadow_effect(self,self.ui.btn_reset)
 
-        ## initialize parameter:
-        self.length1.setText('50')
-        self.length2.setText('40')
-        self.length3.setText('30')
-        self.link = [float(self.length1.text()),
-                     float(self.length2.text()),
-                     float( self.length3.text())]
-        Userfunctions.initialize_robot(self,self.link)
-
     def valuechange(self):
         value_the1 = str(self.ui.the1_adjust.value())
         value_the2 = str(self.ui.the2_adjust.value())

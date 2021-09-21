@@ -134,7 +134,7 @@ border-radius: 5px;</string>
        <height>531</height>
       </rect>
      </property>
-     <layout class="QFormLayout" name="formLayout"/>
+     <layout class="QFormLayout" name="screen_form"/>
     </widget>
    </widget>
    <widget class="QGroupBox" name="adjust_thelta">
@@ -4829,7 +4829,7 @@ QPushButton:pressed {
        <normaloff>../../Robot Controller API/icons/16x16/cil-caret-top.png</normaloff>../../Robot Controller API/icons/16x16/cil-caret-top.png</iconset>
      </property>
     </widget>
-    <widget class="QLineEdit" name="zposvalue">
+    <widget class="QLineEdit" name="zpos">
      <property name="geometry">
       <rect>
        <x>320</x>

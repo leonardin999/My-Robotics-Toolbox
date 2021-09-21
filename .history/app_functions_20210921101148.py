@@ -1,5 +1,4 @@
 from app_modules import *
-from Magician_main import *
 import numpy as np
 import math as m
 import time

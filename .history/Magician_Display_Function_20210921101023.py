@@ -56,9 +56,9 @@ class UIFunctions(MainWindow):
         self.length1.setText('50')
         self.length2.setText('40')
         self.length3.setText('30')
-        self.link = [float(self.length1.text()),
-                     float(self.length2.text()),
-                     float( self.length3.text())]
+        self.link = [float(self.length1),
+                     float(self.length2),
+                     float( self.length3)]
         Userfunctions.initialize_robot(self,self.link)
 
     def valuechange(self):

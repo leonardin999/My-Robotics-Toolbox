@@ -21,7 +21,6 @@ from PyQt5.QtCore import pyqtSlot
 import warnings
 warnings.filterwarnings('ignore')
 from app_modules import *
-from app_functions import *
 class Display(FigureCanvas):
     def __init__(self,parent=None, width = 70, height = 50,dpi=75):
         figure = Figure(figsize=(width,height),dpi=dpi)
@@ -67,9 +66,9 @@ class MainWindow(QMainWindow):
         self.ui.btn_reset.clicked.connect(lambda: UIFunctions.reset(self))
         ## Realtime Display Event:
 
-        timer = QtCore.QTimer()
-        timer.timeout.connect(lambda: Userfunctions.Geometry_display(self))
-        timer.start(50)
+        #timer = QtCore.QTimer()
+        #timer.timeout.connect(display)
+        #timer.start(50)
 
         ## Mouse Clicked and Keyboard Event ##
     def mousePressEvent(self, event):
