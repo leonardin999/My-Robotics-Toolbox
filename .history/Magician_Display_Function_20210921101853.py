@@ -1,5 +1,5 @@
-
-from Magician_main import *
+from app_modules import *
+#from Magician_main import *
 class UIFunctions(MainWindow):
     def toggleMenu_setting(self, maxWidth, enable):
         if enable:
@@ -51,14 +51,15 @@ class UIFunctions(MainWindow):
         UIFunctions.shadow_effect(self,self.ui.btn_minus)
         UIFunctions.shadow_effect(self,self.ui.btn_home)
         UIFunctions.shadow_effect(self,self.ui.btn_reset)
-        # initialize parameter:
-        self.length1.setText('20')
-        self.length2.setText('25')
-        self.length3.setText('10')
-        self.the1_set.setText('0')
-        self.the2_set.setText('0')
-        self.the3_set.setText('0')
-        UIFunctions.Update_value(self)
+
+        ## initialize parameter:
+        self.length1.setText('50')
+        self.length2.setText('40')
+        self.length3.setText('30')
+        self.link = [float(self.length1.text()),
+                     float(self.length2.text()),
+                     float( self.length3.text())]
+        Userfunctions.initialize_robot(self,self.link)
 
     def valuechange(self):
         value_the1 = str(self.ui.the1_adjust.value())
@@ -82,13 +83,6 @@ class UIFunctions(MainWindow):
             self.ui.time_respond.setText(str(minus)+' (s)')
         else: pass
 
-    def length_change(self):
-        self.ui.length1.setText('50')
-        self.ui.length2.setText('40')
-        self.ui.length3.setText('30')
-        self.link = [float(self.length1.text()),
-                        float(self.length2.text()),
-                        float(self.length3.text())]
     def Update_value(self):
        self.ui.the1_adjust.setValue(int(self.ui.the1_set.text()))
        self.ui.the2_adjust.setValue(int(self.ui.the2_set.text()))

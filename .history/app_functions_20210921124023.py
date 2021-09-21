@@ -13,8 +13,8 @@ class Userfunctions(MainWindow):
                         np.deg2rad(float(self.ui.the2_set.text())),
                         np.deg2rad(float(self.ui.the3_set.text())),
                         ]
-    def convert_to_Deg(value):
-        return np.round(np.rad2deg(value),2)
+    def convert_to_Deg(self,value):
+        return np.round((value*180)/2*np.pi,2)
     def Geometry_display(self):
         try:
             self.the = [np.deg2rad(float(self.ui.the1_set.text())),

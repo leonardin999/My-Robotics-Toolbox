@@ -54,46 +54,49 @@ class MainWindow(QMainWindow):
         print('Version: '+platform.release())
         UIFunctions.uiDefinitions(self)
 
-        ## initialize parameter:
-        self.link = [float(self.length1.text()),
-                     float(self.length2.text()),
-                     float(self.length3.text())]
-        Userfunctions.initialize_robot(self,self.link)
-
         self.screen = Display(self,width=50, height=50, dpi=70)
         self.screen.config_display(self.screen)
         self.ui.screen_form.addWidget(self.screen)
 
         self.ui.btn_Setting.clicked.connect(lambda: UIFunctions.toggleMenu_setting(self,280,True))
         self.ui.the1_adjust.valueChanged.connect(lambda: UIFunctions.valuechange(self))
-        self.ui.the1_adjust.valueChanged.connect(lambda: Userfunctions.Geometry_display(self))
         self.ui.the2_adjust.valueChanged.connect(lambda: UIFunctions.valuechange(self))
-        self.ui.the2_adjust.valueChanged.connect(lambda: Userfunctions.Geometry_display(self))
         self.ui.the3_adjust.valueChanged.connect(lambda: UIFunctions.valuechange(self))
-        self.ui.the3_adjust.valueChanged.connect(lambda: Userfunctions.Geometry_display(self))
         self.ui.btn_plus.clicked.connect(lambda: UIFunctions.timechange_plus(self))
         self.ui.btn_minus.clicked.connect(lambda: UIFunctions.timechange_minus(self))
-        self.ui.btn_reset.clicked.connect(lambda: Userfunctions.link_adjustment(self))
-        self.ui.btn_home.clicked.connect(lambda: Userfunctions.Home_position(self))
+        self.ui.btn_reset.clicked.connect(lambda: UIFunctions.reset(self))
+
+        ## initialize parameter:
+        self.length1.setText('50')
+        self.length2.setText('40')
+        self.length3.setText('30')
+        self.link = [float(self.length1.text()),
+                     float(self.length2.text()),
+                     float( self.length3.text())]
+        Userfunctions.initialize_robot(self,self.link)
+
         ## Realtime Display Event:
 
-        #self.timer = QtCore.QTimer()
-        #self.timer.timeout.connect(lambda: Userfunctions.Geometry_display(self))
-        #self.timer.start(100)
+        timer = QtCore.QTimer()
+        timer.timeout.connect(Userfunctions.Geometry_display(self))
+        timer.start(50)
 
         ## Mouse Clicked and Keyboard Event ##
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
         if event.buttons() == Qt.RightButton:
-            pass
+            UIFunctions.reset(self)
         if event.buttons() == Qt.MidButton:
             UIFunctions.Update_value(self)
 
     def keyPressEvent(self, event):
         print('Key: ' + str(event.key()) + ' | Text Press: ' + str(event.text()))
-        if event.key() == Qt.Key_R:
-            UIFunctions.reset(self)
-
+        if event.key() == Qt.Key_Enter():
+            self.ui.length1.setText('50')
+            self.ui.length2.setText('40')
+            self.ui.length3.setText('30')
+            self.ui.link = [self.length1,self.length2,self.length3]
+            Userfunctions.initialize_robot(self,self.link)
 
 
 if __name__=="__main__":

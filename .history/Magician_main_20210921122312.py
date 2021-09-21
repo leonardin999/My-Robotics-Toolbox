@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_plus.clicked.connect(lambda: UIFunctions.timechange_plus(self))
         self.ui.btn_minus.clicked.connect(lambda: UIFunctions.timechange_minus(self))
         self.ui.btn_reset.clicked.connect(lambda: Userfunctions.link_adjustment(self))
-        self.ui.btn_home.clicked.connect(lambda: Userfunctions.Home_position(self))
+
         ## Realtime Display Event:
 
         #self.timer = QtCore.QTimer()

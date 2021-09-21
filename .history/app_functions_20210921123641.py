@@ -13,17 +13,15 @@ class Userfunctions(MainWindow):
                         np.deg2rad(float(self.ui.the2_set.text())),
                         np.deg2rad(float(self.ui.the3_set.text())),
                         ]
-    def convert_to_Deg(value):
-        return np.round(np.rad2deg(value),2)
     def Geometry_display(self):
         try:
             self.the = [np.deg2rad(float(self.ui.the1_set.text())),
                         np.deg2rad(float(self.ui.the2_set.text())),
                         np.deg2rad(float(self.ui.the3_set.text())),
                         ]
-            self.ui.the1_current.setText(str(Userfunctions.convert_to_Deg(self.the[0])))
-            self.ui.the2_current.setText(str(Userfunctions.convert_to_Deg(self.the[1])))
-            self.ui.the3_current.setText(str(Userfunctions.convert_to_Deg(self.the[2])))
+            self.ui.the1_current.setText(str(np.round(self.the[0],2)))
+            self.ui.the2_current.setText(str(np.round(self.the[1],2)))
+            self.ui.the3_current.setText(str(np.round(self.the[2],2)))
             T01 = self.Robot.initial_parameters(self.the,1)
             T02 = self.Robot.initial_parameters(self.the,2)
             T03 = self.Robot.initial_parameters(self.the,3)
@@ -55,17 +53,17 @@ class Userfunctions(MainWindow):
                      float(self.length3.text())]
         self.Robot.ChangeValue(self.link)
         Userfunctions.Geometry_display(self)
-    def Home_position(self):
-            self.the1_set.setText('162')
-            self.ui.the1_adjust.setValue(int(self.ui.the1_set.text()))
-            self.the2_set.setText('23')
-            self.ui.the2_adjust.setValue(int(self.ui.the2_set.text()))
-            self.the3_set.setText('-75')
-            self.ui.the3_adjust.setValue(int(self.ui.the3_set.text()))
-            self.the = [np.deg2rad(float(self.ui.the1_set.text())),
-                        np.deg2rad(float(self.ui.the2_set.text())),
-                        np.deg2rad(float(self.ui.the3_set.text())),
-                    ]
-            Userfunctions.Geometry_display(self)
+def Home_position(self):
+        self.the1_set.setText('162')
+        self.ui.the1_adjust.setValue(int(self.ui.the1_set.text()))
+        self.the2_set.setText('23')
+        self.ui.the2_adjust.setValue(int(self.ui.the2_set.text()))
+        self.the3_set.setText('-75')
+        self.ui.the3_adjust.setValue(int(self.ui.the3_set.text()))
+        self.the = [np.deg2rad(float(self.ui.the1_set.text())),
+                    np.deg2rad(float(self.ui.the2_set.text())),
+                    np.deg2rad(float(self.ui.the3_set.text())),
+                   ]
+        Userfunctions.Geometry_display(self)
 
 

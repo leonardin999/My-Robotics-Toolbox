@@ -56,8 +56,8 @@ class UIFunctions(MainWindow):
         self.length2.setText('25')
         self.length3.setText('10')
         self.the1_set.setText('0')
-        self.the2_set.setText('0')
-        self.the3_set.setText('0')
+        self.the1_set.setText('0')
+        self.the1_set.setText('0')
         UIFunctions.Update_value(self)
 
     def valuechange(self):
