@@ -15,7 +15,6 @@ import serial.tools.list_ports
 import serial
 import time
 import threading
-import sys
 
 warnings.filterwarnings("ignore")
 
@@ -31,7 +30,7 @@ class AR3:
     def __str__(self):
         line = str(
             "Operation option:\n1- Forward Kinematics\n2-Inverse Kinematics"
-            + "\n3-Roll..Pitch..Yaw Examination\n4-Serial Connection\n5-Reset connection\n6-Simulation Circle Drawing"
+            + "\n3-Roll..Pitch..Yaw Examination\n4-Serial Connection\n5-Reset connection"
         )
         return line
 
@@ -365,187 +364,184 @@ class AR3:
         return X, Y, Z
 
     def InverseKinematics(self, Px, Py, Pz, allow=False):
-        try:
-            Pz = Pz + self.d[6] + self.d[7]
-            r11 = -1
-            r12 = 0
-            r13 = 0
-            r21 = 0
-            r22 = 1
-            r23 = 0
-            r31 = 0
-            r32 = 0
-            r33 = -1
-            r41 = 0
-            r42 = 0
-            r43 = 0
-            r44 = 1
-            T1 = np.empty(10, dtype=object)
-            T2 = np.empty(10, dtype=object)
-            T3 = np.empty(10, dtype=object)
-            T4 = np.empty(10, dtype=object)
-            T5 = np.empty(10, dtype=object)
-            T6 = np.empty(10, dtype=object)
-            T1[0] = m.atan2(-Py, -Px)
-    
-            a3 = 2 * self.d[2] * self.d[3]
-            b3 = -2 * (self.d[4] + self.d[5]) * self.d[2]
-            c3 = (
-                Px * Px
-                + Py * Py
-                + Pz * Pz
-                + self.d[1] * self.d[1]
-                + 2 * Px * m.cos(T1[0]) * self.d[1]
-                + 2 * Py * m.sin(T1[0]) * self.d[1]
-                - self.d[2] * self.d[2]
-                - self.d[3] * self.d[3]
-                - (self.d[4] + self.d[5]) * (self.d[4] + self.d[5])
-            )
-            m1 = m.sqrt(a3 * a3 + b3 * b3 - c3 * c3)
-            T3[0] = m.atan2(b3, a3) + m.atan2(m1, c3)
-            the1 = np.rad2deg(T1[0])
-            the3 = np.rad2deg(T3[0])
-    
-            a = self.d[2] - (self.d[4] + self.d[5]) * s(the3) + self.d[3] * c(the3)
-            b = self.d[3] * s(the3) + (self.d[4] + self.d[5]) * c(the3)
-            c0 = c(the1) * Px + s(the1) * Py + self.d[1]
-            d = Pz
-            T2[0] = m.atan2(a * d - b * c0, a * c0 + b * d)
-            the2 = np.rad2deg(T2[0])
-    
-            T_03 = np.matrix(
+        Pz = Pz + self.d[6] + self.d[7]
+        r11 = -1
+        r12 = 0
+        r13 = 0
+        r21 = 0
+        r22 = 1
+        r23 = 0
+        r31 = 0
+        r32 = 0
+        r33 = -1
+        r41 = 0
+        r42 = 0
+        r43 = 0
+        r44 = 1
+        T1 = np.empty(10, dtype=object)
+        T2 = np.empty(10, dtype=object)
+        T3 = np.empty(10, dtype=object)
+        T4 = np.empty(10, dtype=object)
+        T5 = np.empty(10, dtype=object)
+        T6 = np.empty(10, dtype=object)
+        T1[0] = m.atan2(-Py, -Px)
+
+        a3 = 2 * self.d[2] * self.d[3]
+        b3 = -2 * (self.d[4] + self.d[5]) * self.d[2]
+        c3 = (
+            Px * Px
+            + Py * Py
+            + Pz * Pz
+            + self.d[1] * self.d[1]
+            + 2 * Px * m.cos(T1[0]) * self.d[1]
+            + 2 * Py * m.sin(T1[0]) * self.d[1]
+            - self.d[2] * self.d[2]
+            - self.d[3] * self.d[3]
+            - (self.d[4] + self.d[5]) * (self.d[4] + self.d[5])
+        )
+        m1 = m.sqrt(a3 * a3 + b3 * b3 - c3 * c3)
+        T3[0] = m.atan2(b3, a3) + m.atan2(m1, c3)
+        the1 = np.rad2deg(T1[0])
+        the3 = np.rad2deg(T3[0])
+
+        a = self.d[2] - (self.d[4] + self.d[5]) * s(the3) + self.d[3] * c(the3)
+        b = self.d[3] * s(the3) + (self.d[4] + self.d[5]) * c(the3)
+        c0 = c(the1) * Px + s(the1) * Py + self.d[1]
+        d = Pz
+        T2[0] = m.atan2(a * d - b * c0, a * c0 + b * d)
+        the2 = np.rad2deg(T2[0])
+
+        T_03 = np.matrix(
+            [
                 [
-                    [
-                        c(the2 + the3) * c(the1),
-                        -s(the2 + the3) * c(the1),
-                        s(the1),
-                        -c(the1) * (self.d[1] - self.d[2] * c(the2)),
-                    ],
-                    [
-                        c(the2 + the3) * s(the1),
-                        -s(the2 + the3) * s(the1),
-                        -c(the1),
-                        -s(the1) * (self.d[1] - self.d[2] * c(the2)),
-                    ],
-                    [s(the2 + the3), c(the2 + the3), 0, self.d[2] * s(the2)],
-                    [0, 0, 0, 1],
-                ]
-            )
-            T_03_inv = np.linalg.inv(T_03)
-    
-            a5 = (
-                T_03_inv[1, 0] * r13
-                + T_03_inv[1, 1] * r23
-                + T_03_inv[1, 2] * r33
-                + T_03_inv[1, 3] * r43
-            )
-            T5[0] = m.atan2(m.sqrt(1 - a5 * a5), a5)
-            the5 = np.rad2deg(T5[0])
-    
-            a4 = (
-                T_03_inv[2, 0] * r13
-                + T_03_inv[2, 1] * r23
-                + T_03_inv[2, 2] * r33
-                + T_03_inv[2, 3] * r43
-            ) / s(the5)
-            b4 = -(
-                T_03_inv[0, 0] * r13
-                + T_03_inv[0, 1] * r23
-                + T_03_inv[0, 2] * r33
-                + T_03_inv[0, 3] * r43
-            ) / s(the5)
-            T4[0] = m.atan2(a4, b4)
-            the4 = np.rad2deg(T4[0])
-    
-            T_05 = np.matrix(
+                    c(the2 + the3) * c(the1),
+                    -s(the2 + the3) * c(the1),
+                    s(the1),
+                    -c(the1) * (self.d[1] - self.d[2] * c(the2)),
+                ],
                 [
-                    [
-                        -c(the5)
-                        * (
-                            s(the1) * s(the4)
-                            + c(the4)
-                            * (c(the1) * s(the2) * s(the3) - c(the1) * c(the2) * c(the3))
-                        )
-                        - s(the5)
-                        * (c(the1) * c(the2) * s(the3) + c(the1) * c(the3) * s(the2)),
-                        s(the5)
-                        * (
-                            s(the1) * s(the4)
-                            + c(the4)
-                            * (c(the1) * s(the2) * s(the3) - c(the1) * c(the2) * c(the3))
-                        )
-                        - c(the5)
-                        * (c(the1) * c(the2) * s(the3) + c(the1) * c(the3) * s(the2)),
-                        c(the4) * s(the1)
-                        - s(the4)
-                        * (c(the1) * s(the2) * s(the3) - c(the1) * c(the2) * c(the3)),
-                        self.d[3] * c(the2 + the3) * c(the1)
-                        - s(the2 + the3) * c(the1) * (self.d[4] + self.d[5])
-                        - self.d[1] * c(the1)
-                        + self.d[2] * c(the1) * c(the2),
-                    ],
-                    [
-                        c(the5)
-                        * (
-                            c(the1) * s(the4)
-                            - c(the4)
-                            * (s(the1) * s(the2) * s(the3) - c(the2) * c(the3) * s(the1))
-                        )
-                        - s(the5)
-                        * (c(the2) * s(the1) * s(the3) + c(the3) * s(the1) * s(the2)),
-                        -s(the5)
-                        * (
-                            c(the1) * s(the4)
-                            - c(the4)
-                            * (s(the1) * s(the2) * s(the3) - c(the2) * c(the3) * s(the1))
-                        )
-                        - c(the5)
-                        * (c(the2) * s(the1) * s(the3) + c(the3) * s(the1) * s(the2)),
-                        -c(the1) * c(the4)
-                        - s(the4)
-                        * (s(the1) * s(the2) * s(the3) - c(the2) * c(the3) * s(the1)),
-                        self.d[3] * c(the2 + the3) * s(the1)
-                        - s(the2 + the3) * s(the1) * (self.d[4] + self.d[5])
-                        - self.d[1] * s(the1)
-                        + self.d[2] * c(the2) * s(the1),
-                    ],
-                    [
-                        c(the2 + the3) * s(the5) + s(the2 + the3) * c(the4) * c(the5),
-                        c(the2 + the3) * c(the5) - s(the2 + the3) * c(the4) * s(the5),
-                        s(the2 + the3) * s(the4),
-                        c(the2 + the3) * (self.d[4] + self.d[5])
-                        + self.d[3] * s(the2 + the3)
-                        + self.d[2] * s(the2),
-                    ],
-                    [0, 0, 0, 1],
-                ]
+                    c(the2 + the3) * s(the1),
+                    -s(the2 + the3) * s(the1),
+                    -c(the1),
+                    -s(the1) * (self.d[1] - self.d[2] * c(the2)),
+                ],
+                [s(the2 + the3), c(the2 + the3), 0, self.d[2] * s(the2)],
+                [0, 0, 0, 1],
+            ]
+        )
+        T_03_inv = np.linalg.inv(T_03)
+
+        a5 = (
+            T_03_inv[1, 0] * r13
+            + T_03_inv[1, 1] * r23
+            + T_03_inv[1, 2] * r33
+            + T_03_inv[1, 3] * r43
+        )
+        T5[0] = m.atan2(m.sqrt(1 - a5 * a5), a5)
+        the5 = np.rad2deg(T5[0])
+
+        a4 = (
+            T_03_inv[2, 0] * r13
+            + T_03_inv[2, 1] * r23
+            + T_03_inv[2, 2] * r33
+            + T_03_inv[2, 3] * r43
+        ) / s(the5)
+        b4 = -(
+            T_03_inv[0, 0] * r13
+            + T_03_inv[0, 1] * r23
+            + T_03_inv[0, 2] * r33
+            + T_03_inv[0, 3] * r43
+        ) / s(the5)
+        T4[0] = m.atan2(a4, b4)
+        the4 = np.rad2deg(T4[0])
+
+        T_05 = np.matrix(
+            [
+                [
+                    -c(the5)
+                    * (
+                        s(the1) * s(the4)
+                        + c(the4)
+                        * (c(the1) * s(the2) * s(the3) - c(the1) * c(the2) * c(the3))
+                    )
+                    - s(the5)
+                    * (c(the1) * c(the2) * s(the3) + c(the1) * c(the3) * s(the2)),
+                    s(the5)
+                    * (
+                        s(the1) * s(the4)
+                        + c(the4)
+                        * (c(the1) * s(the2) * s(the3) - c(the1) * c(the2) * c(the3))
+                    )
+                    - c(the5)
+                    * (c(the1) * c(the2) * s(the3) + c(the1) * c(the3) * s(the2)),
+                    c(the4) * s(the1)
+                    - s(the4)
+                    * (c(the1) * s(the2) * s(the3) - c(the1) * c(the2) * c(the3)),
+                    self.d[3] * c(the2 + the3) * c(the1)
+                    - s(the2 + the3) * c(the1) * (self.d[4] + self.d[5])
+                    - self.d[1] * c(the1)
+                    + self.d[2] * c(the1) * c(the2),
+                ],
+                [
+                    c(the5)
+                    * (
+                        c(the1) * s(the4)
+                        - c(the4)
+                        * (s(the1) * s(the2) * s(the3) - c(the2) * c(the3) * s(the1))
+                    )
+                    - s(the5)
+                    * (c(the2) * s(the1) * s(the3) + c(the3) * s(the1) * s(the2)),
+                    -s(the5)
+                    * (
+                        c(the1) * s(the4)
+                        - c(the4)
+                        * (s(the1) * s(the2) * s(the3) - c(the2) * c(the3) * s(the1))
+                    )
+                    - c(the5)
+                    * (c(the2) * s(the1) * s(the3) + c(the3) * s(the1) * s(the2)),
+                    -c(the1) * c(the4)
+                    - s(the4)
+                    * (s(the1) * s(the2) * s(the3) - c(the2) * c(the3) * s(the1)),
+                    self.d[3] * c(the2 + the3) * s(the1)
+                    - s(the2 + the3) * s(the1) * (self.d[4] + self.d[5])
+                    - self.d[1] * s(the1)
+                    + self.d[2] * c(the2) * s(the1),
+                ],
+                [
+                    c(the2 + the3) * s(the5) + s(the2 + the3) * c(the4) * c(the5),
+                    c(the2 + the3) * c(the5) - s(the2 + the3) * c(the4) * s(the5),
+                    s(the2 + the3) * s(the4),
+                    c(the2 + the3) * (self.d[4] + self.d[5])
+                    + self.d[3] * s(the2 + the3)
+                    + self.d[2] * s(the2),
+                ],
+                [0, 0, 0, 1],
+            ]
+        )
+
+        T_05_inv = np.linalg.inv(T_05)
+        a6 = (
+            T_05_inv[0, 0] * r11
+            + T_05_inv[0, 1] * r21
+            + T_05_inv[0, 2] * r31
+            + T_05_inv[0, 3] * r41
+        )
+        b6 = -(
+            T_05_inv[2, 0] * r11
+            + T_05_inv[2, 1] * r21
+            + T_05_inv[2, 2] * r31
+            + T_05_inv[2, 3] * r41
+        )
+        T6[0] = m.atan2(b6, a6)
+        the6 = np.rad2deg(T6[0])
+        sum2 = np.array([the1, the2, the3, the4, the5, the6])
+        if allow:
+            value = np.round_(sum2, 3)
+            print(
+                "The desired angle for each joints are:\nthelta1: {}\nthelta2: {}"
+                "\nthelta3: {}\nthelta4: {}\nthelta5: {}\nthelta5: {}\n".format(*value)
             )
-    
-            T_05_inv = np.linalg.inv(T_05)
-            a6 = (
-                T_05_inv[0, 0] * r11
-                + T_05_inv[0, 1] * r21
-                + T_05_inv[0, 2] * r31
-                + T_05_inv[0, 3] * r41
-            )
-            b6 = -(
-                T_05_inv[2, 0] * r11
-                + T_05_inv[2, 1] * r21
-                + T_05_inv[2, 2] * r31
-                + T_05_inv[2, 3] * r41
-            )
-            T6[0] = m.atan2(b6, a6)
-            the6 = np.rad2deg(T6[0])
-            sum2 = np.array([the1, the2, the3, the4, the5, the6])
-            if allow:
-                value = np.round_(sum2, 3)
-                print(
-                    "The desired angle for each joints are:\nthelta1: {}\nthelta2: {}"
-                    "\nthelta3: {}\nthelta4: {}\nthelta5: {}\nthelta5: {}\n".format(*value)
-                )
-            return sum2
-        except:
-            print('error occur!')
+        return sum2
 
     def get_wrist_center(self, gripper_point, R0g, dg=6.5):
         xu, yu, zu = gripper_point
@@ -797,23 +793,6 @@ class AR3:
         plt.title("AR3 Simulation Flatform")
         plt.show()
 
-
-    def circle_drawing(self,radius,center):
-        t = np.linspace(0,10,100)
-        theta = t*(2*np.pi/t[-1:])
-        points = center + radius*np.array([np.cos(theta), np.sin(theta),np.zeros(len(theta))])
-        Tx = points[0,:].T
-        Ty = points[1,:].T
-        Tz = points[2,:].T
-        message = ""
-        with open("data.txt", "w") as output:
-            for i in range(len(Tx)):
-                the = self.InverseKinematics(Tx[i],Ty[i],Tz[i],allow=False)
-                line = str("{} {} {} {} {} {}".format(*the))
-                message = line.strip() + "\n"
-                output.write(message)
-        print('data processing compeleted please open simulation file!')
-
     def Serial_connect(self, comm):
         self.ser.port = comm
         self.ser.baudrate = 115200
@@ -852,10 +831,9 @@ class AR3:
             print(Data_send)
 
     def recieving(self):
-        count = 0
         message = ""
         with open("data.txt", "w") as output:
-            while self.ser.isOpen() and count<300:
+            while self.ser.isOpen():
                 strdata = self.ser.readline().decode()
 
                 thelta = strdata.strip("\r\n").split(" ")
@@ -871,20 +849,4 @@ class AR3:
                         float(thelta[5]),
                     ]
                     x, y, z = self.Fkinematics(the, allow=True)
-                    count+=1
-    def Led_Blink_send(self, theta,t_on,t_off):
-        if self.ser.isOpen():
-            self.ser.write("{0},{1},{2}".format(theta,t_on,t_off).encode())
-            Data_send = str("{0},{1},{2}".format(theta,t_on,t_off))
-            # self.ser.flushInput()  #flush input buffer, discarding all its contents
-            # self.ser.flushOutput()
-            print(Data_send)
-    
-    def Led_Blink_recieve(self):
-        count = 0
-        while self.ser.isOpen() and count<150:
-            strdata = self.ser.readline().decode()
-            self.ser.flushInput()
-            sys.stdout.write('\r'+strdata)
-            count+=1
 
