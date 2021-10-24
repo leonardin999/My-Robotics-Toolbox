@@ -8,7 +8,6 @@ Created on Sun Oct 17 11:21:23 2021
 
 
 import numpy as np
-import threading
 from Libs.AR3_Libs import *
 length = np.array([6.5,2.87,25.5,1.8,7.2,17.7,0,6.5])
 Robot = AR3(length)
